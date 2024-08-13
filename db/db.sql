@@ -1,7 +1,14 @@
-CREATE TABLE quarkus-social;
+CREATE DATABASE quarkus-social;
 
 CREATE TABLE USERS (
-	ID bigserial not null primary key,
+	id bigserial not null primary key,
 	name varchar(100) not null,
 	age integer not null
-)
+);
+
+CREATE TABLE POSTS (
+	id bigserial not null primary key,
+	post_txt varchar(150) not null,
+	dateTime timestamp,
+	user_id bigint not null references USERS(id)
+);
